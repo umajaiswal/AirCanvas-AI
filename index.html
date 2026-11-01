@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirCanvas AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <header class="top-bar">
+        <h2>AirCanvas <span>AI</span></h2>
+        <div class="status-text" id="status">Starting camera...</div>
+    </header>
+
+    <aside class="left-sidebar">
+
+        <h3>Drawing Tools</h3>
+
+        <div class="tool active" id="pen">✏️ Pen</div>
+        <div class="tool" id="eraser">🧽 Eraser</div>
+
+        <hr>
+
+        <h3>Choose Color</h3>
+        <div class="color-palette">
+            <button class="color-box pink" data-color="#ff1493" title="Pink"></button>
+            <button class="color-box red" data-color="#ff0000" title="Red"></button>
+            <button class="color-box blue" data-color="#0000ff" title="Blue"></button>
+            <button class="color-box green" data-color="#00aa44" title="Green"></button>
+            <button class="color-box yellow" data-color="#ffff00" title="Yellow"></button>
+            <button class="color-box black" data-color="#000000" title="Black"></button>
+        </div>
+
+        <hr>
+
+        <h3>Brush Size</h3>
+        <input type="range" id="brush-size" min="1" max="50" value="5">
+
+        <h3>Eraser Size</h3>
+        <input type="range" id="eraser-size" min="5" max="100" value="35">
+
+        <hr>
+
+        <h3>Shapes</h3>
+        <div class="shape-palette">
+            <button class="shape-btn active" data-shape="freehand">✏️ Freehand</button>
+            <button class="shape-btn" data-shape="rectangle">▭ Rectangle</button>
+            <button class="shape-btn" data-shape="circle">◯ Circle</button>
+            <button class="shape-btn" data-shape="triangle">△ Triangle</button>
+            <button class="shape-btn" data-shape="line">／ Line</button>
+            <button class="shape-btn" data-shape="select">✋ Move Shape</button>
+        </div>
+
+        <div class="tool" id="clear">🗑️ Clear Canvas</div>
+
+        <div class="gesture-info">
+            <h3>Gestures</h3>
+            <p>☝️ Index: Draw / Create shape</p>
+            <p>✌️ Two fingers: Erase</p>
+            <p>🤏 Pinch: Grab and move shape</p>
+        </div>
+
+    </aside>
+
+    <main class="main-area">
+
+        <div class="canvas-header">
+            <h3>My Drawing Board</h3>
+            <div class="action-buttons">
+                <button id="undo">Undo</button>
+                <button id="redo">Redo</button>
+                <button id="save">Save PNG</button>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="drawing-canvas"></canvas>
+
+            <div class="camera-panel">
+                <video id="camera-feed" autoplay playsinline muted></video>
+                <p>Live Hand Tracking</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="work.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,274 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f3f8;
+    overflow: hidden;
+}
+
+.app-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.top-bar {
+    height: 65px;
+    flex-shrink: 0;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+}
+
+.top-bar h2 {
+    font-size: 23px;
+    color: #222;
+}
+
+.top-bar h2 span {
+    color: #7c3aed;
+}
+
+.status-text {
+    background: #fff3cd;
+    color: #856404;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Sidebar */
+.left-sidebar {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    bottom: 0;
+    width: 210px;
+    padding: 18px 14px;
+    background: white;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+}
+
+.left-sidebar h3 {
+    font-size: 14px;
+    margin: 12px 0;
+    color: #333;
+}
+
+.left-sidebar hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 18px 0;
+}
+
+.tool {
+    padding: 11px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: #f4f4f8;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tool:hover,
+.tool.active {
+    background: #eee5ff;
+    color: #6d28d9;
+}
+
+#brush-size,
+#eraser-size {
+    width: 100%;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+/* Colors */
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(3, 38px);
+    gap: 12px;
+}
+
+.color-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    cursor: pointer;
+}
+
+.color-box:hover {
+    transform: scale(1.1);
+}
+
+.pink { background: #ff1493; }
+.red { background: red; }
+.blue { background: blue; }
+.green { background: #00aa44; }
+.yellow { background: yellow; }
+.black { background: black; }
+
+/* Shapes */
+.shape-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.shape-btn {
+    width: 100%;
+    padding: 9px;
+    text-align: left;
+    background: #f5f5f8;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    color: #333;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.shape-btn:hover,
+.shape-btn.active {
+    background: #eee5ff;
+    border-color: #7c3aed;
+    color: #6d28d9;
+}
+
+/* Gesture information */
+.gesture-info {
+    margin-top: 18px;
+    padding: 12px;
+    background: #f5f3ff;
+    border-radius: 10px;
+}
+
+.gesture-info p {
+    font-size: 11px;
+    margin: 9px 0;
+    color: #555;
+}
+
+/* Main area */
+.main-area {
+    position: absolute;
+    top: 65px;
+    left: 210px;
+    right: 0;
+    bottom: 0;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+}
+
+.canvas-header {
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.canvas-header h3 {
+    font-size: 17px;
+    color: #333;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-buttons button {
+    border: none;
+    padding: 9px 13px;
+    background: #6d28d9;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.action-buttons button:hover {
+    background: #5b21b6;
+}
+
+/* Canvas */
+.canvas-wrapper {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+}
+
+#drawing-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+/* Camera */
+.camera-panel {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 190px;
+    background: #222;
+    border: 3px solid white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+}
+
+#camera-feed {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.camera-panel p {
+    height: 23px;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    padding: 5px;
+}
+
+@media (max-width: 750px) {
+    .left-sidebar {
+        width: 175px;
+    }
+
+    .main-area {
+        left: 175px;
+        padding: 9px;
+    }
+
+    .camera-panel {
+        width: 140px;
+    }
+
+    #camera-feed {
+        height: 90px;
+    }
+}
